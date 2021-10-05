@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
-
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -17,19 +15,23 @@ class HomePage extends StatelessWidget {
     return Container(
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
-      child: Expanded(
-        child: ListView(
-          children: [
-            header_menu(),
-            scroll_horizontal(context),
-            Container(
-              margin: EdgeInsetsDirectional.only(start: 30,bottom: 30),
-              child: Text("Principales:",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),)
+      child:  Column(
+        children: [
+          Expanded(
+            child: ListView(
+              children: [
+                header_menu(),
+                scroll_horizontal(context),
+                Container(
+                  margin: EdgeInsetsDirectional.only(start: 30,bottom: 30),
+                  child: Text("Principales:",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),)
+                ),
+                vertical_cards(context),
+              ],
+              scrollDirection: Axis.vertical,
             ),
-            vertical_cards(context),
-          ],
-          scrollDirection: Axis.vertical,
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -48,14 +50,12 @@ class HomePage extends StatelessWidget {
 
   Widget vertical_cards(BuildContext context) {
     return Container(
-        child: Expanded(
          child: Column(
           children: [
             desing_card(desing_image('assets/casa.jpg',345,250),text_card(25, 18, 25,40)),
             desing_card(desing_image('assets/casa.jpg',345,250),text_card(25, 18, 25,40)),
             desing_card(desing_image('assets/casa.jpg',345,250),text_card(25, 18, 25,40)),
           ],
-        ),
         ),
     );
   }

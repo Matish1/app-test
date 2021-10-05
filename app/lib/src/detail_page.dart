@@ -54,7 +54,6 @@ class DetailPage extends StatelessWidget {
             delegate: SliverChildListDelegate([ content_sliver(context),]
             ),
           ),
-          //body_content(), 
         ],
 
       ),
@@ -121,18 +120,22 @@ class DetailPage extends StatelessWidget {
       height: 100,
       width: MediaQuery.of(context).size.width,
       margin: EdgeInsets.only(top: 20,bottom: 20),
-      child: Expanded(
-        child: ListView(
-            children: [
-              card_item("1418","metros"),
-              card_item("4","habitaciones"),
-              card_item("2","baños"),
-              card_item("1","estacionamiento"),
-              card_item("1","cocina"),
-            ],
-            scrollDirection: Axis.horizontal,
-          ), 
-        ),    
+      child: Row(
+        children: [
+          Expanded(
+            child: ListView(
+                children: [
+                  card_item("1418","metros"),
+                  card_item("4","habitaciones"),
+                  card_item("2","baños"),
+                  card_item("1","estacionamiento"),
+                  card_item("1","cocina"),
+                ],
+                scrollDirection: Axis.horizontal,
+              ), 
+            ),    
+          ],
+        ),
       );
   }
 
