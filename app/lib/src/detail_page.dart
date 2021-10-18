@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DetailPage extends StatelessWidget {
-  const DetailPage({ Key? key }) : super(key: key);
+  const DetailPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -51,46 +51,51 @@ class DetailPage extends StatelessWidget {
             ),
           ),
           SliverList(
-            delegate: SliverChildListDelegate([ content_sliver(context),]
-            ),
+            delegate: SliverChildListDelegate([
+              content_sliver(context),
+            ]),
           ),
         ],
-
       ),
     );
   }
-  Widget btn_header(){
-      return Container(
-        margin: EdgeInsets.only(top: 20),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            brn_desing(Icons.exit_to_app_sharp, Colors.black,Colors.white),
-            Spacer(),
-            brn_desing(Icons.h_plus_mobiledata_sharp, Colors.black,Colors.white),
-          ],
-        ),
-      );
-  }
 
+  Widget btn_header() {
+    return Container(
+      margin: EdgeInsets.only(top: 20),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          //brn_desing(Icons.exit_to_app_sharp, Colors.black,Colors.white),
+          Spacer(),
+          brn_desing(Icons.h_plus_mobiledata_sharp, Colors.black, Colors.white),
+        ],
+      ),
+    );
+  }
 
   Widget content_sliver(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 24,right: 24,top: 30),
+      padding: EdgeInsets.only(left: 24, right: 24, top: 30),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           data_header(),
           Container(
             padding: EdgeInsets.only(bottom: 10),
-            child: Text("Informacion de la propiedad: ",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+            child: Text(
+              "Informacion de la propiedad: ",
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            ),
           ),
           data_detail(context),
           Text(
             "¡Excelentes espacios que ofrecen bienestar! Sitios de trabajos ergonómicos con altos estándares de calidad que se ajustan a su presupuesto y necesidades, brindando un clima organizacional armónico y equilibrado orientado a la comodidad de sus empleados. Ubicado en el centro de negocios, en donde se encuentran las grandes y pequeñas organizaciones que forman parte del motor económico de la ciudad con alta afluencia peatonal, cerca del metro, locomoción, estacionamientos públicos, que facilitan el acceso a empleados, proveedores y visitantes.",
-            style: TextStyle(color: Colors.black54,),
-            textAlign: TextAlign.justify,
+            style: TextStyle(
+              color: Colors.black54,
             ),
+            textAlign: TextAlign.justify,
+          ),
         ],
       ),
     );
@@ -104,53 +109,62 @@ class DetailPage extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(new String.fromCharCodes(new Runes('\u0024')) + "2000 ",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
-              Text("Concepcion, Chile",style: TextStyle(fontSize: 13,color: Colors.black45),),
+              Text(
+                new String.fromCharCodes(new Runes('\u0024')) + "2000 ",
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              ),
+              Text(
+                "Concepcion, Chile",
+                style: TextStyle(fontSize: 13, color: Colors.black45),
+              ),
             ],
           ),
           Spacer(),
-          card_desing("20 horas atras",144,60),
+          card_desing("20 horas atras", 144, 60),
         ],
       ),
     );
   }
 
-  Widget data_detail(BuildContext context){
+  Widget data_detail(BuildContext context) {
     return Container(
       height: 100,
       width: MediaQuery.of(context).size.width,
-      margin: EdgeInsets.only(top: 20,bottom: 20),
+      margin: EdgeInsets.only(top: 20, bottom: 20),
       child: Row(
         children: [
           Expanded(
             child: ListView(
-                children: [
-                  card_item("1418","metros"),
-                  card_item("4","habitaciones"),
-                  card_item("2","baños"),
-                  card_item("1","estacionamiento"),
-                  card_item("1","cocina"),
-                ],
-                scrollDirection: Axis.horizontal,
-              ), 
-            ),    
-          ],
-        ),
-      );
-  }
-
-  Widget card_item(String text_card,String text) {
-    return Container(
-      child: Column(
-        children: [
-          card_desing(text_card,78,60),
-          Text(text,style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+              children: [
+                card_item("1418", "metros"),
+                card_item("4", "habitaciones"),
+                card_item("2", "baños"),
+                card_item("1", "estacionamiento"),
+                card_item("1", "cocina"),
+              ],
+              scrollDirection: Axis.horizontal,
+            ),
+          ),
         ],
       ),
     );
   }
 
-  Widget brn_desing(IconData icon_name, Color color,Color color_background) {
+  Widget card_item(String text_card, String text) {
+    return Container(
+      child: Column(
+        children: [
+          card_desing(text_card, 78, 60),
+          Text(
+            text,
+            style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget brn_desing(IconData icon_name, Color color, Color color_background) {
     return Container(
       margin: EdgeInsets.all(30),
       decoration: BoxDecoration(
@@ -169,18 +183,20 @@ class DetailPage extends StatelessWidget {
     );
   }
 
-
-  Widget card_desing(String text,double width_data,double heigth_data) {
+  Widget card_desing(String text, double width_data, double heigth_data) {
     return Container(
       height: heigth_data,
       width: width_data,
-      margin: EdgeInsets.only(right: 10,bottom: 8),
+      margin: EdgeInsets.only(right: 10, bottom: 8),
       padding: EdgeInsets.all(20),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(14.0),
         border: Border.all(color: Colors.black12),
       ),
-      child: Text(text,style: TextStyle(fontWeight: FontWeight.bold),),
+      child: Text(
+        text,
+        style: TextStyle(fontWeight: FontWeight.bold),
+      ),
     );
   }
 }
