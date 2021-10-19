@@ -22,16 +22,30 @@ class LoginPage extends StatelessWidget {
   }
 
   Widget header_data() {
-    return Container();
+    return Container(
+      margin: EdgeInsetsDirectional.only(top: 100),
+      child: Column(
+        children: [
+          Text(
+            "HousApp",
+            style: TextStyle(
+              fontSize: 30,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   Widget form_data() {
     return Container(
+      padding: EdgeInsetsDirectional.only(start: 20, end: 20, top: 40),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Usuario"),
+          desing_text("Usuario"),
           input_username(),
-          Text("Clave"),
+          desing_text("Clave"),
           input_password(),
           desing_btn_login(),
         ],
@@ -41,7 +55,7 @@ class LoginPage extends StatelessWidget {
 
   Widget input_username() {
     return Container(
-      padding: EdgeInsetsDirectional.only(start: 20, end: 20),
+      padding: EdgeInsetsDirectional.only(top: 10, bottom: 40),
       child: TextFormField(
         decoration: const InputDecoration(
           hintText: 'Enter your email',
@@ -58,7 +72,7 @@ class LoginPage extends StatelessWidget {
 
   Widget input_password() {
     return Container(
-      padding: EdgeInsetsDirectional.only(start: 20, end: 20),
+      padding: EdgeInsetsDirectional.only(top: 10, bottom: 10),
       child: TextFormField(
         decoration: const InputDecoration(
           hintText: 'Enter your password',
@@ -73,13 +87,25 @@ class LoginPage extends StatelessWidget {
     );
   }
 
+  Widget desing_text(String text) {
+    return Container(
+      child: Text(
+        text,
+        style: TextStyle(fontSize: 20),
+      ),
+    );
+  }
+
   Widget desing_btn_login() {
     return Container(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 16.0),
         child: ElevatedButton(
           onPressed: () {},
-          child: const Text('Submit'),
+          child: const Text(
+            'Login',
+            style: TextStyle(fontSize: 18),
+          ),
         ),
       ),
     );

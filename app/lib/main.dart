@@ -1,6 +1,7 @@
 import 'package:app/routes/routesPage.dart';
 import 'package:app/src/detail_page.dart';
 import 'package:app/src/loginPage.dart';
+import 'package:app/src/settings_page.dart';
 import 'package:flutter/material.dart';
 import 'src/home_page.dart';
 import 'src/detail_page.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoginPage(),
+      home: HomePage(),
       routes: routesPageElement,
     );
   }
