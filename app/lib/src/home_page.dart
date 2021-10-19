@@ -3,13 +3,20 @@ import 'package:app/src/detail_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       body: body_content(context),
+      drawer: drawer_content(context),
     );
   }
 
@@ -40,6 +47,12 @@ class HomePage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  void _openDrawer() {
+    _scaffoldKey.currentState!.openDrawer();
   }
 
   void _openMyPage(BuildContext context) {
@@ -88,8 +101,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  // Esta no es la forma correcta per tenemos el dise;o del drawe
-  // pagina de referencia: https://codea.app/blog/menu-lateral-drawer-en-flutter
+  // Implementacion del boton que activa el drawer y la funcion del drawer
   Widget brn_desing_drawer(BuildContext context, IconData icon_name,
       Color color, Color color_background, Widget drawer) {
     return Container(
@@ -105,7 +117,7 @@ class HomePage extends StatelessWidget {
           color: color,
           size: 20,
         ),
-        onPressed: () => drawer_content(context),
+        onPressed: () => _openDrawer(),
       ),
     );
   }
@@ -119,19 +131,28 @@ class HomePage extends StatelessWidget {
           ),
           child: Text('Drawer Header'),
         ),
-        ListTile(
-          title: const Text('Item 1'),
-          onTap: () {
-            Navigator.pop(context);
-          },
-        ),
-        ListTile(
-          title: const Text('Item 2'),
-          onTap: () {
-            Navigator.pop(context);
-          },
-        ),
+        element(Icons.home, "Principal", "Aplicacion"),
+        element(Icons.account_box_rounded, "Informacion de la cuenta",
+            "Aplicacion"),
+        element(Icons.settings, "Configuracion", "configuracon de usuario"),
       ]),
+    );
+  }
+
+  Widget element(IconData icons, String text, String textSub) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 10),
+      child: ListTile(
+        title: Text(text, style: TextStyle(fontSize: 15)),
+        subtitle: Text(textSub),
+        leading: Icon(
+          icons,
+          size: 30,
+        ),
+        onTap: () {
+          print("informacion");
+        },
+      ),
     );
   }
 
@@ -148,7 +169,6 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  // en el futuro hcaer la configuracion dinamica con el builder
   Widget scroll_horizontal(BuildContext context) {
     return Container(
       height: 250,
@@ -165,7 +185,6 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  // 'assets/casa.jpg'
   Widget card1(BuildContext context, String img) {
     return GestureDetector(
       child: Column(
@@ -237,8 +256,6 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-
-  // Estos son Widgets Creados
 
   Widget brn_desing(BuildContext context, IconData icon_name, Color color,
       Color color_background, String path) {
